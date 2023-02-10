@@ -4,6 +4,7 @@ mean <- function(x) x+1
 cars$speed
 mean(cars$speed)
 rm(mean)
+mean(cars$speed)
 
 fn <- function(x) x * .3025
 fn(100)
@@ -35,6 +36,8 @@ fn <- function(x) {
 }
 fn("a")
 fn(100)
+fn(a)
+a <- 100
 fn(a)
 
 fn <- function(x, unit) {
@@ -159,7 +162,7 @@ while (i <= 25) {
 
 for (i in seq(5, 25, by=5)) print(i)
 
-v <- vector("double", 5)
+(v <- vector("double", 5))
 for(i in seq_along(v)) {
   v[i] <- mean(rnorm(10))
 }
