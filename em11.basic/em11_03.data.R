@@ -97,7 +97,7 @@ dim(m) <- c(3, 2)
 m
 
 rownames(m) <- c("a", "b", "c")
-colnames(m) <- c("w", "x", "y", "z")
+colnames(m) <- c("x", "y")
 m
 
 # Array
