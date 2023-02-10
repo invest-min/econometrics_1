@@ -1,5 +1,7 @@
 # Import, Export
 
+getwd()
+
 data <- data.frame(a = 1:3, b = c("a", "b", "c"))
 
 write.csv(data, file="data.csv")
