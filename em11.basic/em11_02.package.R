@@ -30,7 +30,7 @@ rm(cars)
 cars <- cars
 rm(cars)
 
-setwd("C:/R")
+setwd("C:/R/Class/econometrics_1")
 getwd()
 
 # Package: Install -> Load
