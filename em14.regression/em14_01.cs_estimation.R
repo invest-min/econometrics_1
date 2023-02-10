@@ -129,7 +129,7 @@ stepAIC(fit_null,
         trace = F)
 
 stepAIC(fit_full,
-        scope = list(lower=fit_null, upper=fit_full),
+        scope = list(lower = fit_null, upper=fit_full),
         trace=F)
 
 rm(list=ls())
