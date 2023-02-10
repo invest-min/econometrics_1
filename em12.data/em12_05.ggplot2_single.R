@@ -99,9 +99,9 @@ ggplot(df, aes(x = f)) +
        subtitle = "Subtitle",
        caption = "Caption")
 
-(tb <- as.data.frame(table(df$f)))
+(tb <- as.data.frame(table(f)))
 
-ggplot(tb, aes(x = Var1, y = Freq)) +
+ggplot(tb, aes(x = f, y = Freq)) +
   geom_bar(fill = "skyblue",
            color = "darkgrey",
            size = 1) +
@@ -110,7 +110,7 @@ ggplot(tb, aes(x = Var1, y = Freq)) +
        subtitle = "Subtitle",
        caption = "Caption")
 
-ggplot(tb, aes(x = Var1, y = Freq)) +
+ggplot(tb, aes(x = f, y = Freq)) +
   geom_col(fill = "skyblue",
            color = "darkgrey",
            size = 1) +
@@ -119,7 +119,7 @@ ggplot(tb, aes(x = Var1, y = Freq)) +
        subtitle = "Subtitle",
        caption = "Caption")
 
-ggplot(tb, aes(x = Var1, y = Freq)) +
+ggplot(tb, aes(x = f, y = Freq)) +
   geom_bar(stat = "identity",
            fill = "skyblue",
            color = "darkgrey",
