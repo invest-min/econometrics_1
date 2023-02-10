@@ -34,14 +34,18 @@ a
 
 plot(a, b)
 
-(assign(x, 10))
-(assign("x", 10))
+assign(x, 10)
+assign("x", 10)
+x
 
 x <- "y"
-(assign(x, 10))
+assign(x, 10)
+x
+y
 
 (get("y"))
 (get(x))
+(get(y))
 
 (x <- c("x1", "x2", "x3"))
 (get("x"))
