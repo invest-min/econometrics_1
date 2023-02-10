@@ -9,6 +9,10 @@ search()
 
 library(tibble)
 
+x <- 1:10
+y <- 10:1
+(d <- data.frame(x, y))
+
 (t <- tibble(x, y))
 (t <- as_tibble(d))
 str(t)
@@ -34,25 +38,28 @@ arrange(df, c)
 arrange(df, c, d)
 arrange(df, c, desc(d))
 
+df %>% arrange(c)
+df %>% arrange(c, d)
+df %>% arrange(c, desc(d))
+
 # filter, slice
 
-filter(df, c == 1)
-subset(df, c == 1)
+df %>% filter(c == 1)
+df %>% subset(c == 1)
 df[df$c == 1,]
 
-filter(df, c == 1, a >= 7)
-filter(df, c == 1 & a >= 7)
-filter(df, c == 1 | c == 2)
-
-slice(df, 6:10)
-slice(df, n())
-slice(df, (n() - 4):n())
-
-df %>% slice(5:10)
-df %>% slice(-(5:10))
+df %>% filter(c == 1, a >= 7)
+df %>% filter(c == 1 & a >= 7)
+df %>% filter(c == 1 | c == 2)
 
 df %>% slice(1)
+df %>% slice(1:5)
+df %>% slice(-(1:5))
+
 df %>% slice(n())
+df %>% slice((n() - 2):n())
+df %>% slice(-((n() - 2):n()))
+
 df %>% slice_head(n = 3)
 df %>% slice_tail(n = 3)
 
@@ -68,11 +75,11 @@ df %>% slice_max(b, prop = .3)
 
 # select, relocate, rename
 
-select(df, a, b, c)
-select(df, c, b, a)
-select(df, -a)
-select(df, -a, -b)
-select(df, x = a, y = b, z = c)
+df %>% select(a, b, c)
+df %>% select(c, b, a)
+df %>% select(-a)
+df %>% select(-a, -b)
+df %>% select(x = a, y = b, z = c)
 
 df %>% select(everything())
 df %>% select(last_col())
@@ -83,48 +90,46 @@ df %>% select(contains("c"))
 df %>% relocate(c)
 df %>% relocate(b, .after = c)
 
-rename(df, x = a, y = b, z = c)
-rename_with(df, toupper)
+df %>% rename(x = a, y = b, z = c)
+df %>% rename_with(toupper)
 
 # mutate, summarise
 
-mutate(df, e = a + b)
-transform(df, e = a + b)
+df %>% mutate(e = a + b)
+df %>% transform(e = a + b)
 
-mutate(df, e = a + b, f = e/2)
-transform(df, e = a + b, f = e/2)
+df %>% mutate(e = a + b, f = e/2)
+df %>% transform(e = a + b, f = e/2)
 
-summarise(df, mean(b), median(b), sd(b))
-summarise(df,
-          mean=mean(b),
-          median=median(b),
-          sd=sd(b),
-          N=n())
+df %>% summarise(mean(b), median(b), sd(b))
+df %>% summarise(mean=mean(b),
+                 median=median(b),
+                 sd=sd(b),
+                 N=n())
 
 df %>% summarise(across(starts_with("a"), mean))
 df %>% summarise(across(where(is.numeric), mean))
 
 # sample
 
-sample_n(df, 5)
-sample_n(df, 5, replace=T)
+df %>% sample_n(5)
+df %>% sample_n(5, replace=T)
 
-sample_frac(df, .5)
-sample_frac(df, .5, replace=T)
+df %>% sample_frac(.5)
+df %>% sample_frac(.5, replace=T)
 
 # group_by
 
-group_by(df, c)
+df %>% group_by(c)
 
-df_group <- group_by(df, c)
-summarise(df_group,
-          mean=mean(b),
-          median=median(b),
-          sd=sd(b),
-          N=n())
+df_group <- df %>% group_by(c)
+df_group %>% summarise(mean=mean(b),
+                       median=median(b),
+                       sd=sd(b),
+                       N=n())
 
-df %>% 
-  group_by(c) %>% 
+df %>%
+  group_by(c) %>%
   summarise(mean=mean(b),
             median=median(b),
             sd=sd(b),
@@ -181,12 +186,11 @@ df %>% pivot_longer(c("y2010", "y2020"),
                     names_to="year",
                     values_to="value")
 
-df <- df %>%
-  pivot_longer(contains("y"),
-               names_to="year",
-               names_prefix="y",
-               names_transform=list(year=as.integer),
-               values_to="value")
+df <- df %>% pivot_longer(contains("y"),
+                          names_to="year",
+                          names_prefix="y",
+                          names_transform=list(year=as.integer),
+                          values_to="value")
 df
 
 df %>% pivot_wider(names_from="year",
