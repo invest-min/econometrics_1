@@ -31,7 +31,7 @@ d[1,1]
 (d <- data.frame(x=c("a", "b", "c", "c", "d", NA),
                  y=c(1, 2, 3, 3, 4, 5)))
 duplicated(d)
-df[!duplicated(d),]
+d[!duplicated(d),]
 which(duplicated(d))
 
 complete.cases(d)
@@ -57,25 +57,14 @@ d[i,]
 # with, within
 
 (d <- data.frame(a = 1:5, b = 6:10))
-
 d$a * d$b
 with(d, a * b)
 
-with(d, {
-  ab <- a * b
-  plot(a, ab)
-})
-ab
-
-with(d, {
-  ab <<- a * b
-  plot(a, ab)
-})
-ab
-
-d$ab1 <- d$a * d$b
+d$ab <- with(d, ab <- a * b)
 d
-(d <- within(d, ab2 <- a * b))
+
+(d <- data.frame(a = 1:5, b = 6:10))
+(d <- within(d, ab <- a * b))
 
 # apply
 
@@ -121,6 +110,7 @@ x <- 1:10
 y <- 11:20
 
 mapply(sum, x, y)
+mapply(mean, x, y)
 
 # tapply, table
 
