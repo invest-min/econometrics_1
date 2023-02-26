@@ -43,7 +43,7 @@ as_tibble(boxCox(ols)) %>% slice_max(y, n = 1)
 ln_ols <- lm(log(mpg) ~ disp + hp + vs + cyl, df)
 shapiro.test(resid(ln_ols))
 
-# Heteroskedasticity - GLS, Robust...
+# Heteroskedasticity - WLS, GLS, Robust...
 
 library(lmtest)
 
@@ -53,19 +53,36 @@ library(car)
 
 ncvTest(ols)
 
-w <- 1 / fitted(lm(abs(resid(ols)) ~ fitted(ols))) ^ 2
-wls <- lm(mpg ~ disp + hp, df, weight = w)
+f <- lm(abs(resid(ols)) ~ fitted(ols))
+summary(f)
+# or
+f <- lm(resid(ols)^2 ~ fitted(ols))
+summary(f)
+
+w <- 1 / fitted(f1)^2
+
+wls <- lm(mpg ~ disp + hp + vs + cyl, df, w = w)
 summary(wls)
+
+df2 <- df * sqrt(w)
+
+wls2 <- lm(mpg ~ 0 + sqrt(w) + disp + hp + vs + cyl, dfw)
+summary(wls2)
+
 bptest(wls)
+bptest(wls2)
 ncvTest(wls)
+ncvTest(wls2)
 
 library(nlme)
+
 gls <- gls(mpg ~ disp + hp, df, weights = varPower())
 summary(gls)
 bptest(wls)
 ncvTest(wls)
 
 library(MASS)
+
 rls <- rlm(mpg ~ disp + hp, df)
 summary(rls)
 bptest(wls)
