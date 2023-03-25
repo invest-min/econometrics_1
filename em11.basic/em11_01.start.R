@@ -43,13 +43,13 @@ assign(x, 10)
 x
 y
 
-(get("y"))
-(get(x))
-(get(y))
+get("y")
+get(x)
+get(y)
 
 (x <- c("x1", "x2", "x3"))
-(get("x"))
-(get("x")[1])
+get("x")
+get("x")[1]
 
 # Objects
 
