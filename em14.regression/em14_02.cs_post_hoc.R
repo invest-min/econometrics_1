@@ -1,4 +1,4 @@
-library(tidyvers)
+library(tidyverse)
 
 (df <- mtcars[, c(1, 8, 9, 2, 10, 3, 4, 6)])
 ols <- lm(mpg ~ disp + hp + vs + cyl, df)
