@@ -78,33 +78,6 @@ fn <- function(x, unit = "py", ...) {
 fn(100)
 fn(100, unit = "sqft", digits = 2)
 
-fn <- function(x, unit = "py", digits = 2) {
-  if(!is.numeric(x)) return("Not a number")
-  if(unit == "py") area <- round(x * .3025, digits = 2)
-  if(unit == "sqft") area <- round(x * 10.7639, digits = 2)
-  if(unit != "py" & unit != "sqft")
-    return("Unit is Not py nor sqft")
-  out <- paste0(x, "m2 is ", area, unit)
-  return(out)
-}
-fn(100)
-fn(100, digits = 4)
-
-fn <- function(x, unit = "py", FUN = round, ...) {
-  if(!is.numeric(x)) return("Not a number")
-  if(unit == "py") area <- FUN(x * .3025, ...)
-  if(unit == "sqft") area <- FUN(x * 10.7639, ...)
-  if(unit != "py" & unit != "sqft")
-    return("Unit is Not py nor sqft")
-  out <- paste0(x, "m2 is ", area, unit)
-  return(out)
-}
-fn(100)
-fn(100, digits = 2)
-fn(100, FUN=signif, digits = 3)
-fn(100, FUN = floor)
-fn(100, FUN = ceiling)
-
 # If, Else, Ifelse
 
 x <- pi
