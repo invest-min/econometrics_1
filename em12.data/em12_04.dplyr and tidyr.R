@@ -133,7 +133,8 @@ df %>%
   summarise(mean=mean(b),
             median=median(b),
             sd=sd(b),
-            N=n())
+            N=n()) %>% 
+  ungroup()
 
 df %>% head
 df$b %>% mean
