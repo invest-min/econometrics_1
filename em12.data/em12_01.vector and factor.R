@@ -59,7 +59,7 @@ v[duplicated(v)]
 which(duplicated(v))
 v[which(duplicated(v))]
 
-# Cut, Set
+# Cut
 
 v
 
