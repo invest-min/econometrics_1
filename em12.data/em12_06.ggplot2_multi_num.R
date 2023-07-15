@@ -3,11 +3,11 @@
 x <- 1:20
 y <- c(1,3,2,2,5,4,3,6,5,5,7,6,7,9,6,8,9,11,14,10)
 f <- sample(factor(c("a", "b", "c")),
-            100,
+            20,
             replace = T,
             set.seed(1234))
 g <- sample(factor(c("a", "b", "c")),
-            100,
+            20,
             replace = T,
             set.seed(4321))
 
@@ -16,9 +16,6 @@ g <- sample(factor(c("a", "b", "c")),
 library(ggplot2)
 
 # Point
-
-?par
-?points
 
 ggplot(df, aes(x = x, y = y)) +
   geom_point() +
@@ -35,6 +32,8 @@ ggplot(df, aes(x = x, y = y)) +
        title = "Title",
        subtitle = "Subtitle",
        caption = "Caption")
+
+?points
 
 ggplot(df, aes(x = x, y = y)) +
   geom_point(shape = 21, color = "blue", size = 3) +
@@ -62,8 +61,6 @@ ggplot(df, aes(x = x, y = y)) +
 
 # Line
 
-?lines
-
 ggplot(df, aes(x = x, y = y)) +
   geom_line() +
   labs(x = "xxx",
@@ -79,6 +76,8 @@ ggplot(df, aes(x = x, y = y)) +
        title = "Title",
        subtitle = "Subtitle",
        caption = "Caption")
+
+?lines
 
 ggplot(df, aes(x = x, y = y)) +
   geom_line(linetype = "dashed", color = "blue", size = 1) +
@@ -131,7 +130,9 @@ ggplot(df, aes(x = x, y = y)) +
 ggplot(df, aes(x = x, y = y)) +
   geom_point() +
   geom_smooth() +
-  geom_text(label = f, hjust = 0, vjust = 0) +
+  geom_text(label = f,
+            hjust = 0,
+            vjust = 0) +
   labs(x = "xxx",
        y = "yyy",
        title = "Title",
@@ -146,21 +147,6 @@ ggplot(df, aes(x = x, y = y)) +
             vjust = 0,
             nudge_x = .1,
             nudge_y = .1) +
-  labs(x = "xxx",
-       y = "yyy",
-       title = "Title",
-       subtitle = "Subtitle",
-       caption = "Caption")
-
-ggplot(df, aes(x = x, y = y)) +
-  geom_point() +
-  geom_smooth() +
-  geom_text(label = f,
-            hjust = 0,
-            vjust = 0,
-            nudge_x = .1,
-            nudge_y = .1,
-            size=4) +
   labs(x = "xxx",
        y = "yyy",
        title = "Title",

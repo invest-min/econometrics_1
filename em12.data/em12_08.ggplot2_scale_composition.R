@@ -96,7 +96,7 @@ ggplot(df, aes(x = f, y = y, fill = g)) +
   scale_fill_discrete(name = "group") +
   theme(legend.position = c(.05, .85))
 
-# Composition
+# Arrange
 
 g1 <- ggplot(df, aes(x = x, y = y)) +
   geom_point()
@@ -113,6 +113,8 @@ g4 <- ggplot(df, aes(x = x, y = y)) +
 library(gridExtra)
 
 grid.arrange(g1, g2, g3, g4, nrow = 2)
+
+# Patchwork
 
 library(patchwork)
 

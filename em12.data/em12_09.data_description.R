@@ -65,7 +65,8 @@ gp
 
 # Summarize
 
-df %>% group_by(cyl) %>% 
+df %>%
+  group_by(cyl) %>% 
   summarise(n = n(),
             na = sum(is.na(mpg)),
             mean = mean(mpg, na.rm = T),
@@ -74,7 +75,8 @@ df %>% group_by(cyl) %>%
             max = max(mpg, na.rm = T),
             range = diff(range(mpg, na.rm = T)),
             q1 = quantile(mpg, .25),
-            q3 = quantile(mpg, .75))
+            q3 = quantile(mpg, .75)) %>% 
+  ungroup()
 
 # Box Plot
 

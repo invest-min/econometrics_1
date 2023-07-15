@@ -16,6 +16,10 @@ library(ggplot2)
 
 # Category_Category
 
+ggplot(df, aes(x = f)) +
+  geom_bar() +
+  labs(x = "fff")
+
 ggplot(df, aes(x = f, fill = g)) +
   geom_bar() +
   labs(x = "fff")
@@ -32,8 +36,8 @@ ggplot(df, aes(x = f, fill = g)) +
   geom_bar(position = "dodge2") +
   labs(x = "fff")
 
-ggplot(df, aes(x=f, fill=g)) +
-  geom_bar(position="fill") +
+ggplot(df, aes(x = f, fill = g)) +
+  geom_bar(position = "fill") +
   labs(x="fff")
 
 ggplot(df, aes(x = f, fill = g)) +
@@ -82,16 +86,6 @@ ggplot(df, aes(y = y)) +
 ggplot(df, aes(x = y)) +
   geom_density() +
   geom_rug() +
-  facet_grid(f ~ g)
-
-ggplot(df, aes(x = y)) +
-  geom_density() +
-  geom_rug() +
-  facet_grid(g ~ f)
-
-ggplot(df, aes(x = y)) +
-  geom_density() +
-  geom_rug() +
   facet_grid(f ~ .)
 
 ggplot(df, aes(x = y)) +
@@ -102,6 +96,11 @@ ggplot(df, aes(x = y)) +
 ggplot(df, aes(x = y)) +
   geom_density() +
   geom_rug() +
-  facet_grid(f ~ .)
+  facet_grid(f ~ g)
+
+ggplot(df, aes(x = y)) +
+  geom_density() +
+  geom_rug() +
+  facet_grid(g ~ f)
 
 rm(list=ls())
