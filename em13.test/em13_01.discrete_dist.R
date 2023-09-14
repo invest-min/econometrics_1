@@ -31,7 +31,7 @@ x <- 0:10
 y = dbinom(x, size = 10, prob = 0.5)
 plot(x, y, pch = 19)
 
-plot(x, y=dbinom(x, size = 10, prob = 0.5),
+plot(x, y = dbinom(x, size = 10, prob = 0.5),
      pch = 19, col = "red")
 
 df <- data.frame(x, y)

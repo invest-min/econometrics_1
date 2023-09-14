@@ -116,16 +116,17 @@ pf(1, df1 = 1, df2 = 1)
 qf(0.5, df1 = 1, df2 = 1)
 rf(10, df1 = 1, df2 = 1)
 
+df1 <- function(x) df(x, df1 = 1, df2 = 1)
+df3 <- function(x) df(x, df1 = 3, df2 = 1)
+df5 <- function(x) df(x, df1 = 5, df2 = 1)
+
 ggplot(data.frame(x = c(0, 5)), aes(x)) +
   stat_function(aes(color = "df = 1, 1"),
-                fun = "df",
-                args = list(df1 = 1, df2 = 1)) +
+                fun = df1) +
   stat_function(aes(color = "df = 3, 1"),
-                fun = "df",
-                args = list(df1 = 3, df2 = 1)) +
+                fun = df3) +
   stat_function(aes(color = "df = 5, 1"),
-                fun = "df",
-                args = list(df1 = 5, df2 = 1)) +
+                fun = df5) +
   labs(title = "F Distribution", color = "")
 
 # Chi-Squared
@@ -135,16 +136,17 @@ pchisq(1, df = 1)
 qchisq(.683, df = 1)
 rchisq(10, df = 1)
 
+dchisq1 <- function(x) dchisq(x, df = 1)
+dchisq2 <- function(x) dchisq(x, df = 2)
+dchisq3 <- function(x) dchisq(x, df = 3)
+
 ggplot(data.frame(x = c(0, 7)), aes(x)) +
   stat_function(aes(color = "df = 1"),
-                fun = "dchisq",
-                args = list(df = 1)) +
-  stat_function(aes(color = "df = 3"),
-                fun = "dchisq",
-                args = list(df = 2)) +
+                fun = dchisq1) +
+  stat_function(aes(color = "df = 2"),
+                fun = dchisq2) +
   stat_function(aes(color = "df = 5"),
-                fun = "dchisq",
-                args = list(df = 3)) +
+                fun = dchisq3) +
   labs(title = "Chi-Squared Distribution")
 
 rm(list=ls())
