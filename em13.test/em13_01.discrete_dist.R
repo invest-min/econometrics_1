@@ -6,12 +6,12 @@ sample(c("H", "T"), size = 1, replace = T)
 sample(c("H", "T"), size = 1, replace = T, prob = c(0.2, 0.8))
 
 a <- sample(c("H", "T"),
-            size = 10,
+            size = 100,
             replace = T)
 table(a)
 
 b <- sample(c("H", "T"),
-            size = 10,
+            size = 100,
             replace = T,
             prob = c(0.2, 0.8))
 table(b)

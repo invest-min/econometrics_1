@@ -145,7 +145,7 @@ ggplot(data.frame(x = c(0, 7)), aes(x)) +
                 fun = dchisq1) +
   stat_function(aes(color = "df = 2"),
                 fun = dchisq2) +
-  stat_function(aes(color = "df = 5"),
+  stat_function(aes(color = "df = 3"),
                 fun = dchisq3) +
   labs(title = "Chi-Squared Distribution")
 
