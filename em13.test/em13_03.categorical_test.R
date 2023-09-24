@@ -21,6 +21,7 @@ ggplot(data.frame(x = c(-3, 3)), aes(x)) +
 
 mtcars
 str(mtcars)
+?mtcars
 
 (df <- mtcars[, c(1, 8, 9, 2, 10, 3, 4, 6)])
 
@@ -28,13 +29,13 @@ str(mtcars)
 (tb2 <- with(df, table(cyl, gear)))
 
 chisq.test(df$vs, df$am)
-chisq.test(df$vs, df$am, simulate.p.value=T)
+chisq.test(df$vs, df$am, simulate.p.value = T)
 
 chisq.test(df$cyl, df$gear)
-chisq.test(df$cyl, df$gear, simulate.p.value=T)
+chisq.test(df$cyl, df$gear, simulate.p.value = T)
 
 chisq.test(tb2)
-chisq.test(tb2, simulate.p.value=T)
+chisq.test(tb2, simulate.p.value = T)
 
 fisher.test(tb2,
             conf.level = 0.95,
@@ -42,7 +43,7 @@ fisher.test(tb2,
 fisher.test(tb2,
             conf.level = 0.95,
             alternative = c("two.sided"),
-            simulate.p.value=T)
+            simulate.p.value = T)
 
 library(vcd)
 
@@ -62,6 +63,6 @@ chisq.test(apply(tb2, 1, sum),
            c(0.3, 0.2, 0.4))
 chisq.test(apply(tb2, 1, sum),
            c(0.3, 0.2, 0.4),
-           simulate.p.value=T)
+           simulate.p.value = T)
 
 rm(list=ls())
