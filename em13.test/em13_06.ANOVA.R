@@ -8,7 +8,7 @@ library(tidyverse)
 df$cyl <- factor(df$cyl)
 str(df)
 
-(aov <- aov(mpg ~ cyl, df))
+aov <- aov(mpg ~ cyl, df)
 
 summary(aov)
 summary.lm(aov)
