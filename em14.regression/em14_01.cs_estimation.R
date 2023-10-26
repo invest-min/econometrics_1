@@ -80,8 +80,6 @@ anova(ols2)
 anova(ols1, ols2)
 
 summary(ols2)$r.squared
-deviance(ols2)
-logLik(ols2)
 AIC(ols2)
 BIC(ols2)
 
@@ -101,23 +99,9 @@ glance(ols2)
 lm(mpg ~ disp, subset = 1:30, df)
 lm(mpg ~ disp, df, subset = cyl == "4")
 
-step(ols2, direction = "both")
 step(ols2, direction = "forward")
 step(ols2, direction = "backward")
-
-library(leaps)
-
-fit <- regsubsets(mpg ~ ., df)
-
-summary(fit)
-plot(fit)
-plot(fit, scale = "adjr2")
-
-fit <- regsubsets(mpg ~ ., df, nvmax = 5)
-
-summary(fit)
-plot(fit)
-plot(fit, scale = "adjr2")
+step(ols2, direction = "both")
 
 library(MASS)
 
@@ -129,7 +113,7 @@ stepAIC(fit_null,
         trace = F)
 
 stepAIC(fit_full,
-        scope = list(lower = fit_null, upper=fit_full),
-        trace=F)
+        scope = list(lower = fit_null, upper = fit_full),
+        trace = F)
 
-rm(list=ls())
+rm(list = ls())

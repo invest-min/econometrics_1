@@ -2,7 +2,6 @@ library(tidyverse)
 
 (df <- mtcars[, c(1, 8, 9, 2, 10, 3, 4, 6)])
 ols <- lm(mpg ~ disp + hp, df)
-plot(ols, pch = 20)
 
 # Interval
 
@@ -14,8 +13,6 @@ x <- data.frame(disp = 200:300, hp = 100:200)
 (n <- predict(ols, x, interval = c("none"), level = 0.95))
 (c <- predict(ols, x, interval = c("confidence"), level = 0.95))
 (p <- predict(ols, x, interval = c("prediction"), level = 0.95))
-
-str(c)
 
 plot(c[, "fit"], type = "l", xlim=c(0, 101), ylim=c(15, 25))
 lines(c[, "lwr"], type = "l", col = "blue")
