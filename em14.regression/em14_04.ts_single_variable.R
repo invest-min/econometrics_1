@@ -96,11 +96,6 @@ approx(v, xout = 6.5)
 approx(v, n = 24)
 plot(approx(v, n = 24))
 
-plot(v, w)
-approx(v, w, xout = 6.5)
-approx(v, w, n = 24)
-plot(approx(v, w, n = 24)$x, approx(v, w, n = 24)$y)
-
 # Decomposition
 
 plot(a)
@@ -159,23 +154,14 @@ autoplot(forecast(auto.arima(s)))
 sd <- diff(s)
 autoplot(sd)
 auto.arima(sd)
-checkresiduals(auto.arima(sd))
-forecast(auto.arima(sd))
-autoplot(forecast(auto.arima(sd)))
 
 sl <- log(s)
 autoplot(sl)
 auto.arima(sl)
-checkresiduals(auto.arima(sl))
-forecast(auto.arima(sl))
-autoplot(forecast(auto.arima(sl)))
 
 sld <- diff(log(s))
 autoplot(sld)
 auto.arima(sld)
-checkresiduals(auto.arima(sld))
-forecast(auto.arima(sld))
-autoplot(forecast(auto.arima(sld)))
 
 # ARCH and GARCH
 
@@ -193,15 +179,5 @@ summary(g11)
 AIC(g01, g02, g11)
 
 checkresiduals(g02)
-
-library(fGarch)
-
-fg0011 <- garchFit(~ garch(1, 1), s, trace = F)
-summary(fg0011)
-predict(fg0011, 10, plot = T)
-
-fg1111 <- garchFit(~ arma(1, 1) + garch(1, 1), s, trace = F)
-summary(fg1111)
-predict(fg1111, 10, plot = T)
 
 rm(list = ls())
