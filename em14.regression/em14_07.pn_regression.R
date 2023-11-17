@@ -63,7 +63,6 @@ fe7 <- plm(inv ~ value + capital,
            model = "within",
            df)
 summary(fe7)
-pFtest(fe7, fe)
 
 fe8 <- plm(inv ~ value + capital,
            index = c("firm", "year"),
@@ -71,32 +70,5 @@ fe8 <- plm(inv ~ value + capital,
            model = "random",
            df)
 summary(fe8)
-
-# Post-hoc Test
-
-library(lmtest)
-
-bptest(data = df,
-       inv ~ value + capital + factor(firm),
-       studentize = F)
-
-pbgtest(fe)
-
-coeftest(fe)[, c(1,2)]
-coeftest(fe, 
-         vcov = vcovHC(fe,
-                       type = "sss",
-                       cluster = "group"))[, c(1, 2)]
-library(lfe)
-fec <- felm(inv ~ value + capital | firm | 0 | firm, df)
-summary(fec)
-
-pbgtest(re)
-
-coeftest(re)[, c(1, 2)]
-coeftest(re, 
-         vcov = vcovHC(re,
-                       type = "sss",
-                       cluster = "group"))[, c(1, 2)]
 
 rm(list = ls())

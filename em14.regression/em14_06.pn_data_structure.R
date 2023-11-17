@@ -80,13 +80,12 @@ Box.test(pl$resid)
 library(car)
 durbinWatsonTest(pl, max.lag = 2)
 library(lmtest)
-bptest(pl)
-
 bgtest(pl)
-
-shapiro.test(pl$residuals)
 
 library(forecast)
 checkresiduals(pl)
+
+shapiro.test(pl$residuals)
+bptest(pl)
 
 rm(list = ls())

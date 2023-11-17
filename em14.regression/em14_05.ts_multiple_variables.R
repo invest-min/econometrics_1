@@ -110,7 +110,7 @@ coint.test(stock[, 1], stock[, 2:4])
 fit2 <- ecm(stock[, 1], stock[, 2:4])
 
 fit3 <- lm(diff(DAX) ~
-             diff(CAC) + diff(SMI) + diff(FTSE) +
+             diff(SMI) + diff(CAC) + diff(FTSE) +
              lag(resid(fit1))[-length(resid(fit1))],
            stock)
 summary(fit3)
